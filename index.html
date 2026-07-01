@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Comprobante SIAT</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-color: #f4f6f9;
+      --text-color: #000;
+      --box-color: #fff;
+      --btn-color: #143061;
+      --border-light: #d9d9d9;
+    }
+
+    body.dark-mode {
+      --bg-color: #121212;
+      --text-color: #fff;
+      --box-color: #1e1e1e;
+      --btn-color: #0f356e;
+      --border-light: #333;
+    }
+
+    body {
+      font-family: "Poppins", Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* HEADER FIJO */
+    .header {
+      background-color: var(--btn-color);
+      color: white;
+      padding: 8px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-title img {
+      height: 55px;
+      max-width: 100%;
+    }
+
+    /* LUNA — tamaño generoso para que no se corte */
+    .toggle-mode {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      padding: 4px;
+    }
+
+    .toggle-mode svg {
+      width: 30px;
+      height: 30px;
+      fill: white;
+    }
+
+    /* TÍTULO — negro, negrita, izquierda, dos líneas */
+    .titulo-principal {
+      text-align: left;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #000;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      padding: 0 20px;
+    }
+
+    .wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 0 14px 28px 14px;
+      width: 100%;
+    }
+
+    /* CONTENEDOR más delgado y ligeramente alargado */
+    .container {
+      width: 100%;
+      max-width: 340px;
+      background-color: var(--box-color);
+      padding: 18px 16px 24px 16px;
+      border-radius: 22px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+      border: 1px solid var(--border-light);
+    }
+
+    .separator {
+      border-top: 1px solid var(--border-light);
+      margin: 6px 0 12px 0;
+    }
+
+    .datos-secundarios h3 {
+      font-size: 1.0rem;
+      opacity: 0.75;
+      margin-bottom: 10px;
+    }
+
+    .dato {
+      display: flex;
+      align-items: center;
+      margin: 14px 0;
+    }
+
+    .icono {
+      width: 36px;
+      height: 36px;
+      margin-right: 12px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .dato-texto {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dato-label {
+      font-weight: 600;
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
+
+    .dato-value {
+      font-size: 0.95rem;
+    }
+
+    /* BOTÓN — ancho completo, texto en dos líneas */
+    .btn {
+      background-color: var(--btn-color);
+      color: white;
+      border: none;
+      padding: 14px 16px;
+      width: 100%;
+      border-radius: 14px;
+      font-size: 0.90rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn img {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    .btn span {
+      text-align: center;
+      line-height: 1.3;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="header">
+    <div class="header-title">
+      <img src="logotipo.jpeg" alt="SIAT" />
+    </div>
+    <button class="toggle-mode" onclick="toggleDarkMode()">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="titulo-principal">Datos del Comprobante<br>QR</div>
+
+  <div class="wrapper">
+    <div class="container">
+
+      <div class="separator"></div>
+
+      <div class="datos-secundarios">
+        <h3>Datos del Comprobante</h3>
+      </div>
+
+      <div class="dato">
+        <img src="usuario.jpeg" class="icono">
+        <div class="dato-texto">
+          <div class="dato-label">Razon Social</div>
+          <div class="dato-value">CYNTHIA  ANAI RENJEL OROSCO</div>
+        </div>
+      </div>
+
+      <div class="dato">
+        <img src="papel.jpeg" class="icono">
+        <div class="dato-texto">
+          <div class="dato-label">Nit</div>
+          <div class="dato-value">3508485013</div>
+        </div>
+      </div>
+
+      <div class="dato">
+        <img src="pantallau.jpeg" class="icono">
+        <div class="dato-texto">
+          <div class="dato-label">Número de Tramite</div>
+          <div class="dato-value">—</div>
+        </div>
+      </div>
+
+      <div class="dato">
+        <img src="moneda.jpeg" class="icono">
+        <div class="dato-texto">
+          <div class="dato-label">Monto Total Bs.</div>
+          <div class="dato-value">20149</div>
+        </div>
+      </div>
+
+      <div class="dato">
+        <img src="dolar.jpeg" class="icono">
+        <div class="dato-texto">
+          <div class="dato-label">Monto Total Sus.</div>
+          <div class="dato-value">0</div>
+        </div>
+      </div>
+
+      <div class="dato">
+        <img src="maleta.jpeg" class="icono">
+        <div class="dato-texto">
+          <div class="dato-label">Fecha Pago</div>
+          <div class="dato-value">17/04/2026</div>
+        </div>
+      </div>
+
+      <div class="dato">
+        <img src="carne.jpeg" class="icono">
+        <div class="dato-texto">
+          <div class="dato-label">Estado</div>
+          <div class="dato-value">PAGADO</div>
+        </div>
+      </div>
+
+      <button class="btn" onclick="abrirPDF()">
+        <img src="impresora.jpg" alt="">
+        <span>IMPRIMIR COMPROBANTE<br>PAGO</span>
+      </button>
+
+    </div>
+  </div>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+
+    function abrirPDF() {
+      window.open('comprofdp.pdf', '_blank');
+    }
+  </script>
+
+</body>
+</html>
